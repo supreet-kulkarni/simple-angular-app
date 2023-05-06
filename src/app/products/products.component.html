@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-2">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+             Categories
+            </a>
+            <a (click)="filter('')" class="list-group-item list-group-item-action">All products</a>
+            <a *ngFor="let x of categories|keyvalue" (click)="filter(x.value)" class="list-group-item list-group-item-action">{{x.value}}</a>
+           </div>
+    </div>
+
+    <div class="col-sm-10">
+        <div class="card" *ngFor="let x of filtercatgory">
+            <img src="{{x.url}}" alt="product" class="img">
+            <p class="text padding">{{x.name}}</p>
+            <p class="text">{{x.price|currency:'INR'}}</p>
+            <button class="btn btn-primary">Add to cart</button>
+        </div>
+    </div>

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-sm-12"></div>
+
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+      <form #f="ngForm" (ngSubmit)="postproduct(f.value)">
+        <label for="category">Select category:</label>
+        <select ngModel #category="ngModel" class="form-control" id="category" name="category">
+            <option *ngFor="let x of categories|keyvalue" value="{{x.value}}">
+                {{x.value}}
+            </option>
+           </select>
+        <label for="name">Product name:</label>
+        <input ngModel #name="ngModel" type="text" class="form-control" placeholder="Enter product name" id="name" name="name">
+        <label for="name">Product price:</label>
+        <input ngModel #price="ngModel" type="number" class="form-control" placeholder="Enter product price" id="price" name="price">
+        <label for="name">Product URL:</label>
+        <input ngModel #url="ngModel" type="text" class="form-control" placeholder="Enter product URL" id="url" name="url">
+      <button class="btn btn-primary">Submit</button>  
+      </form>
+    </div>
+
+    <div class="col-sm-6">
+        <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let x of products">
+                <td>{{x.category}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.price|currency:'INR'}}</td>
+                <td>
+                  <button type="button" class="action-btn"><i class="fa fa-edit"></i></button>
+                  <button type="button" class="action-btn"><i class="fa fa-trash"></i></button>
+                </td>
+              </tr>
+             </tbody>
+          </table>
+    </div>
+</div>
